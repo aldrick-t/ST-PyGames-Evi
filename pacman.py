@@ -5,11 +5,10 @@ Exercises
 1. Change the board. DONE
 2. Change the number of ghosts. DONE
 3. Change where pacman starts. DONE
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
+4. Make the ghosts faster/slower. DONE
+5. Make the ghosts smarter. DONE
 """
 
-from random import choice
 from turtle import (
     Turtle, bgcolor, clear, up, goto, dot, update, ontimer, setup,
     hideturtle, tracer, listen, onkey, done
@@ -145,9 +144,20 @@ def move():
                 vector(0, ghostSpeed),
                 vector(0, -ghostSpeed),
             ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+            # Choose the move that minimizes the distance to Pacman
+            min_dist = float('inf')
+            best_move = None
+            for option in options:
+                new_point = point + option
+                dist = (abs(pacman.x - new_point.x) +
+                        abs(pacman.y - new_point.y))
+                if dist < min_dist and valid(new_point):
+                    min_dist = dist
+                    best_move = option
+
+            if best_move:
+                course.x = best_move.x
+                course.y = best_move.y
 
         up()
         goto(point.x + 10, point.y + 10)
@@ -172,7 +182,7 @@ def change(x, y):
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
-writer.goto(160, 160)
+writer.goto(180, 180)
 writer.color('white')
 writer.write(state['score'])
 listen()
