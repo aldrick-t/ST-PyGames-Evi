@@ -2,6 +2,7 @@
 (Evidencia Semana TEC TC1001S)
 
 ## Pacman
+By: Aldrick Tadeo (aldrick-t), A01710105
 
 Pacman game Python source code running with Python Turtle Graphics, original program from Free Python Games*, modified by aldrick-t in compliance to PEP8 standards.
 Main modifications & additions:
@@ -14,3 +15,4 @@ Main modifications & additions:
 
 > **Free Python Games (Copyright 2017-2023 Grant Jenks, Licensed under the Apache License, Version 2.0, https://grantjenks.com/docs/freegames/)*
 
+<img width="532" alt="Pacman running with python3 on Mac" src="https://github.com/user-attachments/assets/362eb573-2a4a-4866-b25b-6631f0d31364">
