@@ -20,15 +20,16 @@ from freegames import floor, vector
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
-aim = vector(5, 0)
+ghostSpeed = 10
+aim = vector(ghostSpeed, 0)
 pacman = vector(80, 80)
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
-    [vector(0, 0), vector(5, 5)],  # New ghost
-    [vector(0, -80), vector(-5, -5)],  # New ghost
+    [vector(-180, 160), vector(ghostSpeed, 0)],
+    [vector(-180, -160), vector(0, ghostSpeed)],
+    [vector(100, 160), vector(0, -ghostSpeed)],
+    [vector(100, -160), vector(-ghostSpeed, 0)],
+    [vector(0, 0), vector(ghostSpeed, ghostSpeed)],  # New ghost
+    [vector(0, -80), vector(-ghostSpeed, -ghostSpeed)],  # New ghost
 ]
 # fmt: off
 tiles = [
@@ -139,10 +140,10 @@ def move():
             point.move(course)
         else:
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(ghostSpeed, 0),
+                vector(-ghostSpeed, 0),
+                vector(0, ghostSpeed),
+                vector(0, -ghostSpeed),
             ]
             plan = choice(options)
             course.x = plan.x
